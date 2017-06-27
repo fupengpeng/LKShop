@@ -58,6 +58,8 @@ import retrofit2.Response;
  */
 public class UserSettingActivity extends BaseThemeSettingActivity {
 
+
+    public static final String TAG = "UserSettingActivity";
     private static final int PHOTO_REQUEST_CAMERA = 1;// 拍照
 
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
@@ -100,6 +102,8 @@ public class UserSettingActivity extends BaseThemeSettingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_setting);
         ButterKnife.bind(this);
+
+        android.util.Log.e(TAG, "onCreate: "+"----------001" );
         PushAgent.getInstance(this).onAppStart();
         user_setting_toolbar.setTitle("用户设置");
         uid = BaseUtils.readLocalUser(UserSettingActivity.this).getUid();

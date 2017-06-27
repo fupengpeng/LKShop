@@ -2,6 +2,7 @@ package net.anumbrella.lkshop.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import java.util.List;
  * Date：16/5/25 下午7:19
  */
 public class NavDrawerListAdapter extends BaseAdapter {
+
+    public static final String TAG = "NavDrawerListAdapter";
 
     private Context context;
     private List<NavDrawerItemModel> navDrawerItems;
@@ -45,6 +48,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e(TAG, "getView: "+"NavDrawerListAdapter适配器" );
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);

@@ -84,6 +84,8 @@ public class SubCommentActivity extends BaseThemeSettingActivity implements Swip
     TextView sendSubComment;
 
 
+    public static final String TAG = "SubCommentActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

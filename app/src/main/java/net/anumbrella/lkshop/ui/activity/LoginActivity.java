@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,6 +45,8 @@ import retrofit2.Response;
  */
 public class LoginActivity extends BaseThemeSettingActivity {
 
+    public static final String TAG = "LoginActivity";
+
     private ProgressDialog mDialog;
 
     private String phone;
@@ -79,6 +82,7 @@ public class LoginActivity extends BaseThemeSettingActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.e(TAG, "onCreate: "+"----001----" );
         ButterKnife.bind(this);
         PushAgent.getInstance(this).onAppStart();
         login_password.getEditText().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -100,6 +104,7 @@ public class LoginActivity extends BaseThemeSettingActivity {
     public void clickBtn(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
+                Log.e(TAG, "clickBtn: "+"----002----" );
                 prompt = true;
                 if (checkUpResult == false) {
                     checkUpResult = true;
@@ -107,16 +112,19 @@ public class LoginActivity extends BaseThemeSettingActivity {
                 getData();
                 break;
             case R.id.btn_register:
+                Log.e(TAG, "clickBtn: "+"----003----" );
                 Intent intent_register = new Intent();
                 intent_register.setClass(this, RegisterActivity.class);
                 startActivity(intent_register);
                 break;
             case R.id.forget_password:
+                Log.e(TAG, "clickBtn: "+"----004----" );
                 Intent intent_forget_password = new Intent();
                 intent_forget_password.setClass(this, FindPasswordActivity.class);
                 startActivity(intent_forget_password);
                 break;
             case R.id.btn_back:
+                Log.e(TAG, "clickBtn: "+"----005----" );
                 if (startUp != null) {
                     if (startUp.equals("main")) {
                         finish();
@@ -136,6 +144,7 @@ public class LoginActivity extends BaseThemeSettingActivity {
     private void getData() {
         phone = login_phone.getEditText().getText().toString().trim();
         password = login_password.getEditText().getText().toString().trim();
+        Log.e(TAG, "getData: "+"----006----" );
 
         if (phone.equals("") && prompt) {
             Toast.makeText(this, "手机号不能为空", Toast.LENGTH_SHORT).show();
@@ -160,6 +169,7 @@ public class LoginActivity extends BaseThemeSettingActivity {
     }
 
     private void doLogin() {
+        Log.e(TAG, "doLogin: "+"----007----" );
         if (checkUpResult) {
             mDialog.show();
             OkHttpClient.Builder builder = new OkHttpClient.Builder();

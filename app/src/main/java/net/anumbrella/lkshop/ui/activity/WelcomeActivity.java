@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +30,8 @@ import butterknife.ButterKnife;
  * Date：16/5/23 下午6:03
  */
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static final String TAG = "WelcomeActivity";
 
 
     @BindView(R.id.goComing)
@@ -66,6 +69,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
+
+        Log.e(TAG, "onCreate: "+"0001*-*-*-" );
         initData();
 
     }

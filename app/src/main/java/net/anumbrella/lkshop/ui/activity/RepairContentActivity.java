@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,6 +22,7 @@ import net.anumbrella.lkshop.ui.fragment.RepairScreenTypeFragment;
 public class RepairContentActivity extends BaseThemeSettingActivity {
 
     private String type = null;
+    public static final String TAG = "RepairContentActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class RepairContentActivity extends BaseThemeSettingActivity {
         setContentView(R.layout.activity_repaircontent);
         PushAgent.getInstance(this).onAppStart();
         type = getIntent().getStringExtra("repairType");
+        Log.e(TAG, "onCreate: "+"----001--" );
         if (type != null) {
 
             if (type.equals(Config.repairTexts[3])) {

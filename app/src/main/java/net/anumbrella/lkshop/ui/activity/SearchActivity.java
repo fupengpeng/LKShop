@@ -27,6 +27,8 @@ import butterknife.ButterKnife;
  */
 public class SearchActivity extends BaseThemeSettingActivity {
 
+    public static final String TAG = "SearchActivity";
+
     private CategorizeDetailProductAdapter adapter;
 
     private GridLayoutManager girdLayoutManager;

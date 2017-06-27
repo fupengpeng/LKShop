@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import retrofit2.Response;
 public class UserNameSettingActivity extends BaseThemeSettingActivity {
 
 
+
     @BindView(R.id.edit_name_text)
     MyEditText editText;
 
@@ -49,11 +51,16 @@ public class UserNameSettingActivity extends BaseThemeSettingActivity {
 
     private int uid;
 
+
+    public static final String TAG = "SubCommentActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_name_setting);
         ButterKnife.bind(this);
+        Log.e(TAG, "onCreate: "+"---001-" );
         PushAgent.getInstance(this).onAppStart();
         if (getIntent().getIntExtra("type", -1) != -1) {
             type = getIntent().getIntExtra("type", -1);

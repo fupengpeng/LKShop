@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -38,6 +39,8 @@ import retrofit2.Response;
  * Date：16/5/29 上午9:03
  */
 public class FindPasswordActivity extends BaseThemeSettingActivity {
+
+    public static final String TAG = "WelcomeActivity";
 
 
     /**
@@ -84,6 +87,8 @@ public class FindPasswordActivity extends BaseThemeSettingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
         ButterKnife.bind(this);
+
+        Log.e(TAG, "onCreate: "+"FindPasswordActivity---001" );
         PushAgent.getInstance(this).onAppStart();
         passNew.getEditText().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         initSMS();

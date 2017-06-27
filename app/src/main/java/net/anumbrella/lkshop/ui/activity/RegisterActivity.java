@@ -37,6 +37,9 @@ import retrofit2.Response;
  */
 public class RegisterActivity extends BaseThemeSettingActivity {
 
+    public static final String TAG = "RegisterActivity";
+
+
     private String phone;
 
     private String password;

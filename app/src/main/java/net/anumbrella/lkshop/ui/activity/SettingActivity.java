@@ -32,7 +32,7 @@ import butterknife.OnClick;
  * Date：16/6/24 下午6:12
  */
 public class SettingActivity extends BaseThemeSettingActivity {
-
+    public static final String TAG = "SettingActivity";
 
     @BindView(R.id.setting_toolbar)
     Toolbar toolbar;

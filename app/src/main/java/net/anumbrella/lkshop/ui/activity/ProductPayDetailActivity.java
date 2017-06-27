@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ import retrofit2.Response;
  */
 public class ProductPayDetailActivity extends BaseThemeSettingActivity {
 
+    public static final String TAG = "ProductPayDetailActivity";
+
     private ArrayList<ListProductContentModel> data;
 
     private ProgressDialog mDialog;
@@ -66,6 +69,7 @@ public class ProductPayDetailActivity extends BaseThemeSettingActivity {
         mDialog.setMessage("请稍等");
         mDialog.setIndeterminate(false);
 
+        Log.e(TAG, "onCreate: "+"0001----" );
         // 设置ProgressDialog 是否可以按退回按键取消
         mDialog.setCancelable(false);
 
@@ -83,6 +87,7 @@ public class ProductPayDetailActivity extends BaseThemeSettingActivity {
                     String result = response.body().string().toString();
 
                     if (position == data.size() - 1) {
+                        Log.e(TAG, "onResponse: "+"0002----" );
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -121,6 +126,7 @@ public class ProductPayDetailActivity extends BaseThemeSettingActivity {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btn_upload_order:
+                Log.e(TAG, "click: "+"0003" );
                 mDialog.show();
                 for (int i = 0; i < data.size(); i++) {
                     OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -150,6 +156,7 @@ public class ProductPayDetailActivity extends BaseThemeSettingActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+
                 finish();
                 return true;
         }

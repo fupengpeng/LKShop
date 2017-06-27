@@ -19,6 +19,8 @@ public class ListProductAdapter extends RecyclerArrayAdapter<ListProductContentM
 
     private FloatingActionButton fab;
 
+    public static final String TAG = "ListProductAdapter";
+
     public ListProductAdapter(Context context) {
         super(context);
         this.fab = MainActivity.floatBtn;

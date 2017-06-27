@@ -67,6 +67,7 @@ import butterknife.OnClick;
  * Date：16/5/23 下午6:12
  */
 public class MainActivity extends BaseThemeSettingActivity {
+    public static final String TAG = "MainActivity";
 
     protected FragmentTabHost tabHost;
 
@@ -152,9 +153,10 @@ public class MainActivity extends BaseThemeSettingActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main02);
         ButterKnife.bind(this);
 
+        Log.e(TAG, "onCreate: "+"----0001----" );
         tabHost = (FragmentTabHost) super.findViewById(android.R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager()
                 , R.id.contentLayout);
@@ -177,6 +179,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
     @Override
     protected void onResume() {
+        Log.e(TAG, "onResume: "+"----0008----");
         updateUserIcon();
         updateSignName();
         updateUserName();
@@ -185,6 +188,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     private void updateUserName() {
+        Log.e(TAG, "updateUserName: "+"----0011----" );
         String name = BaseUtils.readLocalUser(MainActivity.this).getUserName();
         if (!name.equals("null")) {
             userName.setText(name);
@@ -194,6 +198,7 @@ public class MainActivity extends BaseThemeSettingActivity {
     }
 
     private void updateSignName() {
+        Log.e(TAG, "updateSignName: "+"----0010----" );
         String sign = BaseUtils.readLocalUser(MainActivity.this).getSignName();
         if (!sign.equals("null")) {
             signName.setText(sign);
@@ -203,6 +208,7 @@ public class MainActivity extends BaseThemeSettingActivity {
     }
 
     private void updateUserIcon() {
+        Log.e(TAG, "updateUserIcon: "+"----0009----");
         String img = BaseUtils.readLocalUser(MainActivity.this).getUserImg();
         if (!img.equals("null")) {
             user_img.setImageURI(Uri.parse(img));
@@ -216,7 +222,11 @@ public class MainActivity extends BaseThemeSettingActivity {
         }
     }
 
-    @OnClick({R.id.fab, R.id.user_img, R.id.tv_signName, R.id.tv_name, R.id.login_tip})
+    @OnClick({R.id.fab,
+            R.id.user_img,
+            R.id.tv_signName,
+            R.id.tv_name,
+            R.id.login_tip})
     public void clickFab(View view) {
         switch (view.getId()) {
             case R.id.fab:
@@ -225,10 +235,12 @@ public class MainActivity extends BaseThemeSettingActivity {
             case R.id.login_tip:
             case R.id.user_img:
                 if (checkLogin()) {
+                    Log.e(TAG, "clickFab: "+"----0013----" );
                     Intent intent = new Intent();
                     intent.setClass(this, UserSettingActivity.class);
                     startActivity(intent);
                 } else {
+                    Log.e(TAG, "clickFab: "+"----0014----" );
                     Intent intent = new Intent();
                     intent.putExtra("startUp", "main");
                     intent.setClass(this, LoginActivity.class);
@@ -244,6 +256,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     private boolean checkLogin() {
+        Log.e(TAG, "checkLogin: "+"----0015----" );
         boolean isLogin = BaseUtils.readLocalUser(MainActivity.this).isLogin();
         return isLogin;
     }
@@ -252,6 +265,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 关闭抽屉菜单
      */
     private void closeDrawer() {
+        Log.e(TAG, "closeDrawer: "+"----0016----" );
         if (drawerLayout == null) {
             return;
         }
@@ -265,6 +279,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 初始化消息推送
      */
     private void initPush() {
+        Log.e(TAG, "initPush: "+"----0003----" );
         if (JUtils.getSharedPreference().getBoolean("shouldPush", true)) {
             PushAgent mPushAgent = PushAgent.getInstance(this);
             mPushAgent.onAppStart();
@@ -274,6 +289,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     public void goToUp(int position) {
+        Log.e(TAG, "goToUp: "+"----0012----" );
         if (myTabFragmentAdapter.getFragment(viewPager.getCurrentItem()) != null) {
             if (viewPager.getCurrentItem() == 0) {
                 ((RecommendFragment) myTabFragmentAdapter.getFragment(0)).recyclerView.scrollToPosition(position);
@@ -294,6 +310,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 初始化搜索视图
      */
     private void initSearchView() {
+        Log.e(TAG, "initSearchView: "+"----0004----" );
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -315,6 +332,7 @@ public class MainActivity extends BaseThemeSettingActivity {
     }
 
     private void initMyTab() {
+        Log.e(TAG, "initMyTab: "+"----0007----" );
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.white));
         myTabFragmentAdapter = new MyTabFragmentAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(myTabFragmentAdapter);
@@ -346,6 +364,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 初始化AppBar的设置
      */
     private void initAppBarSetting() {
+        Log.e(TAG, "initAppBarSetting: "+"----0006----" );
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -382,6 +401,8 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 抽屉菜单的初始化
      */
     private void setDrawerLayout(Toolbar toolbar) {
+
+        Log.e(TAG, "setDrawerLayout: "+"----0005----");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
@@ -445,31 +466,37 @@ public class MainActivity extends BaseThemeSettingActivity {
         switch (position) {
             case 0:
                 //首页
+                Log.e(TAG, "selectItem: "+"----0017----" );
                 tabHost.setCurrentTab(0);
                 viewPager.setCurrentItem(0);
                 break;
             case 1:
                 //设置
+                Log.e(TAG, "selectItem: "+"----0018----" );
                 Intent settingIntent = new Intent();
                 settingIntent.setClass(MainActivity.this, SettingActivity.class);
                 startActivity(settingIntent);
                 break;
             case 2:
                 //意见反馈
+                Log.e(TAG, "selectItem: "+"----0019----" );
                 Toast.makeText(MainActivity.this, "下一版本推出", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
                 //分享
+                Log.e(TAG, "selectItem: "+"----0020----" );
                 openShare();
                 break;
             case 4:
                 //关于
+                Log.e(TAG, "selectItem: "+"----0021----" );
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
                 break;
             case 5:
                 //退出
+                Log.e(TAG, "selectItem: "+"----0022----" );
                 if(checkLogin()){
                     LocalUserDataModel data = new LocalUserDataModel();
                     data.setSignName("null");
@@ -487,6 +514,7 @@ public class MainActivity extends BaseThemeSettingActivity {
     }
 
     public void openShare() {
+        Log.e(TAG, "openShare: "+"----0023----" );
         ShareConfig config = new ShareConfig();
         config.init(this, this).openShare(this, false);
 
@@ -496,6 +524,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 初始化Tab
      */
     private void initTab() {
+        Log.e(TAG, "initTab: "+"----0002----" );
         String[] tabTexts = TabModel.getTabTexts();
         for (int i = 0; i < tabTexts.length; i++) {
             TabHost.TabSpec tabSpec = tabHost.newTabSpec(tabTexts[i]).setIndicator(getTabView(i));
@@ -514,6 +543,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * @return
      */
     private View getTabView(int position) {
+        Log.e(TAG, "getTabView: "+"----0024----" );
         View view = LayoutInflater.from(this).inflate(R.layout.tabs_footer, null);
         if (position == 0) {
             (view.findViewById(R.id.ivImg)).setEnabled(true);
@@ -529,6 +559,7 @@ public class MainActivity extends BaseThemeSettingActivity {
         @Override
         public void onTabChanged(String tabId) {
 
+            Log.e(TAG, "onTabChanged: "+"----0025----" );
             if (tabId.equals(Config.tabs[0])) {
                 selectTab = false;
                 setSupportActionBar(toolbar);
@@ -556,6 +587,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     public void addFragment(int index) {
+        Log.e(TAG, "addFragment: "+"----0027----" );
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (index == 0) {
             fragmentTransaction.add(MyTabFragmentAdapter.getFragment(index), "RecommendFragment");
@@ -570,6 +602,7 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     public void deleteFragment(int index) {
+        Log.e(TAG, "deleteFragment: "+"----0028----" );
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(MyTabFragmentAdapter.getFragment(index));
         fragmentTransaction.commit();
@@ -577,6 +610,8 @@ public class MainActivity extends BaseThemeSettingActivity {
 
 
     private void updateTabs() {
+        Log.e(TAG, "updateTabs: "+"----0026----" );
+
         TabWidget tabw = tabHost.getTabWidget();
         for (int i = 0; i < tabw.getChildCount(); i++) {
             View view = tabw.getChildAt(i);
@@ -595,6 +630,7 @@ public class MainActivity extends BaseThemeSettingActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+
             pressAgainExit();
             return true;
         }
@@ -606,6 +642,7 @@ public class MainActivity extends BaseThemeSettingActivity {
      * 双击返回键离开
      */
     private void pressAgainExit() {
+        Log.e(TAG, "pressAgainExit: "+"----0029----" );
         if (exit.isExit()) {
             for (Activity activity : JActivityManager.getActivityStack()) {
                 activity.finish();

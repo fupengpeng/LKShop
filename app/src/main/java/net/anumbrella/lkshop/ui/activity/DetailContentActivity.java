@@ -20,6 +20,7 @@ import net.anumbrella.lkshop.ui.fragment.DetailContentFragment;
 public class DetailContentActivity extends BaseThemeSettingActivity {
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

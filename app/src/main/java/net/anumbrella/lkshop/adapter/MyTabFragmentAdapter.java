@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import net.anumbrella.lkshop.R;
 import net.anumbrella.lkshop.ui.fragment.ListProductFragment;
@@ -18,6 +19,8 @@ import java.util.HashMap;
  * Date：16/5/23 下午10:08
  */
 public class MyTabFragmentAdapter extends FragmentStatePagerAdapter {
+
+    public static final String TAG = "MyTabFragmentAdapter";
 
     private static HashMap<String, Fragment> fragments;
 
@@ -37,6 +40,7 @@ public class MyTabFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.e(TAG, "getItem: "+"MyTagFragmentAdapter适配器" );
         Fragment fragment;
         Bundle bundle = new Bundle();
         switch (position) {

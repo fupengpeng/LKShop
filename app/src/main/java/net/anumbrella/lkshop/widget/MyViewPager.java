@@ -3,6 +3,7 @@ package net.anumbrella.lkshop.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 /**
@@ -10,6 +11,8 @@ import android.view.MotionEvent;
  * Date：16/5/27 下午8:57
  */
 public class MyViewPager extends ViewPager {
+
+    public static final String TAG = "MyViewPager";
 
     private boolean scrollble = true;
 
@@ -24,6 +27,7 @@ public class MyViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "onTouchEvent: "+"自定义viewPager" );
         if (scrollble) {
             return super.onTouchEvent(ev);
         }else {

@@ -5,12 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/LKShop.iml" filepath="$PROJECT_DIR$/LKShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/LKShop-master.iml" filepath="$PROJECT_DIR$/LKShop-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/PushSDK/PushSDK.iml" filepath="$PROJECT_DIR$/PushSDK/PushSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PushSDK/PushSDK.iml" filepath="$PROJECT_DIR$/PushSDK/PushSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/umeng_sharelibrary/umeng_sharelibrary.iml" filepath="$PROJECT_DIR$/umeng_sharelibrary/umeng_sharelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/umeng_sharelibrary/umeng_sharelibrary.iml" filepath="$PROJECT_DIR$/umeng_sharelibrary/umeng_sharelibrary.iml" />
     </modules>
   </component>
