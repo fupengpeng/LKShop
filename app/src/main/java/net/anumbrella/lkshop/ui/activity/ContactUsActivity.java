@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ import butterknife.OnClick;
  * Date：16/6/27 下午8:13
  */
 public class ContactUsActivity extends BaseThemeSettingActivity {
+
+    public static final String TAG = "ContactUsActivity";
 
 
     @BindView(R.id.contact_us_toolbar)
@@ -46,6 +49,7 @@ public class ContactUsActivity extends BaseThemeSettingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
         ButterKnife.bind(this);
+        Log.e(TAG, "onCreate: "+"ContactUsActivity--*-*-*-001" );
         toolbar.setTitle("联系我们");
         setToolbar(toolbar);
     }

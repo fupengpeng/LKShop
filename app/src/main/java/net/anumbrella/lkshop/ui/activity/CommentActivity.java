@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Xml;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,8 @@ public class CommentActivity extends BaseThemeSettingActivity {
 
     public final static String ARG_ITEM_INFO_COMMENT_ORDER = "item_info_comment_order";
 
+    public static final String TAG = "CommentActivity";
+
     private HashMap<String, Integer> commentHasMap = new HashMap<>();
 
     private static AllOrderActivity object = new AllOrderActivity();
@@ -74,6 +77,7 @@ public class CommentActivity extends BaseThemeSettingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
         ButterKnife.bind(this);
+        Log.e(TAG, "onCreate: "+"评价界面001" );
         PushAgent.getInstance(this).onAppStart();
         if (getIntent().getParcelableExtra(ARG_ITEM_INFO_COMMENT_ORDER) != null) {
             this.orderData = getIntent().getParcelableExtra(ARG_ITEM_INFO_COMMENT_ORDER);

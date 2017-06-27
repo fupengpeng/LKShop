@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -28,6 +29,8 @@ import butterknife.ButterKnife;
  * Date：16/6/10 下午11:09
  */
 public class CollectActivity extends BaseThemeSettingActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    public static final String TAG = "CollectActivity";
 
     private static CollectAdapter adapter;
 
@@ -54,6 +57,7 @@ public class CollectActivity extends BaseThemeSettingActivity implements SwipeRe
         uid = BaseUtils.readLocalUser(CollectActivity.this).getUid();
         toolbar.setTitle("我的收藏");
         setToolbar(toolbar);
+        Log.e(TAG, "onCreate: "+"我的收藏" );
         adapter = new CollectAdapter(this);
         girdLayoutManager = new GridLayoutManager(this, 2);
         girdLayoutManager.setSpanSizeLookup(adapter.obtainTipSpanSizeLookUp());

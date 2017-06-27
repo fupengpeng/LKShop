@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -30,6 +31,7 @@ import butterknife.ButterKnife;
 public class CategorizeDetailProductActivity extends BaseThemeSettingActivity {
 
     public static final String INTENT_PRODUCT_ITEM_INFO = "item_product_info";
+    public static final String TAG = "CategorizeDetailProductActivity";
 
     private ProductTypeModel productTypeModel;
 
@@ -55,6 +57,7 @@ public class CategorizeDetailProductActivity extends BaseThemeSettingActivity {
             productTypeModel = getIntent().getParcelableExtra(INTENT_PRODUCT_ITEM_INFO);
 
         }
+        Log.e(TAG, "onCreate: "+"商品分类" );
         toolbar.setTitle("商品分类");
         adapter = new CategorizeDetailProductAdapter(this);
         girdLayoutManager = new GridLayoutManager(this, 2);

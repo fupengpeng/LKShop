@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -25,6 +26,7 @@ public class BaseWebActivity extends AppCompatActivity {
 
     public static final String BUNDLE_KEY_URL = "BUNDLE_KEY_URL";
     public static final String BUNDLE_KEY_TITLE = "BUNDLE_KEY_TITLE";
+    private static final String TAG = "BaseWebActivity" ;
 
     private String mWebUrl = null;
     private String mWebTitle = null;
@@ -43,6 +45,7 @@ public class BaseWebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base_web);
         ButterKnife.bind(this);
 
+        Log.e(TAG, "onCreate: "+"网页" );
         Bundle extras = getIntent().getExtras();
         if (null != extras) {
             mWebTitle = extras.getString(BUNDLE_KEY_TITLE);

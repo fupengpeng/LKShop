@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.umeng.message.PushAgent;
@@ -19,6 +20,7 @@ import net.anumbrella.lkshop.ui.fragment.DetailContentFragment;
  */
 public class DetailContentActivity extends BaseThemeSettingActivity {
 
+    public static final String TAG = "DetailContentActivity";
 
 
     @Override
@@ -27,6 +29,7 @@ public class DetailContentActivity extends BaseThemeSettingActivity {
         setContentView(R.layout.activity_detailcontent);
         PushAgent.getInstance(this).onAppStart();
         DetailContentFragment fragment = null;
+        Log.e(TAG, "onCreate: "+"DetailContentActivity====001" );
         if (getIntent().getParcelableExtra(DetailContentFragment.ARG_ITEM_INFO_RECOMMEND) instanceof RecommendContentModel) {
             fragment = DetailContentFragment.newInstance((RecommendContentModel) getIntent().getParcelableExtra(DetailContentFragment.ARG_ITEM_INFO_RECOMMEND));
         } else if(getIntent().getParcelableExtra(DetailContentFragment.ARG_ITEM_INFO_LISTPRODUCT) instanceof ListProductContentModel){
